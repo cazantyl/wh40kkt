@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Warhammer Utilities</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <div>
+    <app-root>
+      <div class="preloaded-loading-wrapper">
+        <p class="preloaded-loading-message">
+          Loading Warhammer Utilities
+          <span class="d" style="padding-left: 6px">.</span>
+          <span class="d d-2" style="margin-left: -8px">.</span>
+          <span class="d d-3" style="margin-left: -8px">.</span>
+        </p>
+        <img class="preloaded-loading-graphic rotate" src="./assets/ktli.svg" alt="Kill Team Logo" />
+      </div>
+      <style>
+        .d {
+          animation: dots .75s ease-out infinite;
+          -webkit-animation: dots .75s ease-out infinite;
+          -moz-animation: dots .75s ease-out infinite;
+        }
+
+        .d-2 {
+          animation-delay: .25s;
+          -webkit-animation-delay: .25s;
+          -moz-animation-delay: .25s;
+        }
+
+        .d-3 {
+          animation-delay: .5s;
+          -webkit-animation-delay: .5s;
+          -moz-animation-delay: .5s;
+        }
+
+
+
+        @-webkit-keyframes dots {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
+        }
+
+        @-moz-keyframes dots {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes dots {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
+        }
+
+        @-webkit-keyframes rotate {
+          from {
+            -webkit-transform: rotateY(0deg)
+          }
+
+          to {
+            -webkit-transform: rotateY(360deg)
+          }
+        }
+
+        @-moz-keyframes rotate {
+          from {
+            -moz-transform: rotateY(0deg)
+          }
+
+          to {
+            -moz-transform: rotateY(360deg)
+          }
+        }
+
+        @-ms-keyframes rotate {
+          from {
+            -ms-transform: rotateY(0deg)
+          }
+
+          to {
+            -ms-transform: rotateY(360deg)
+          }
+        }
+
+        @keyframes rotate {
+          from {
+            transform: rotateY(0deg)
+          }
+
+          to {
+            transform: rotateY(360deg)
+          }
+        }
+
+        body {
+          margin: 0 !important;
+        }
+
+        .preloaded-loading-wrapper {
+          background:
+            radial-gradient(black 15%, transparent 16%) 0 0,
+            radial-gradient(black 15%, transparent 16%) 8px 8px,
+            radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px,
+            radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+          background-color: #282828;
+          background-size: 16px 16px;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .preloaded-loading-message {
+          font-family: Verdana;
+          font-size: 28px;
+          color: white;
+          margin-bottom: 24px;
+        }
+
+        .preloaded-loading-graphic {
+          height: 250px;
+          width: 250px;
+          -webkit-animation: rotate 3s linear infinite;
+          -moz-animation: rotate 3s linear infinite;
+          -ms-animation: rotate 3s linear infinite;
+          animation: rotate 3s linear infinite;
+        }
+      </style>
+    </app-root>
+  </div>
+</body>
+
+</html>

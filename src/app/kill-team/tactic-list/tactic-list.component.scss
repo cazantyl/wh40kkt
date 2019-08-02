@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
+
+.tactic-header-image {
+  background-image: url('../../../assets/images/dark-angels.jpg');
+  background-size: cover;
+}
+
+.header {
+  font-family: Gunplay, 'Black Ops One';
+  font-weight: normal;
+}
+
+h1 {
+  font-family: Gunplay, 'Black Ops One';
+  font-weight: normal;
+  color: white;
+  margin-bottom: 0px;
+  padding-left: 20px;
+}
+
+.description {
+  font-style: italic;
+}
+
+// .white-field {
+::ng-deep .white-field.mat-form-field {
+  .mat-input-element {
+    color: white;
+  }
+  .mat-form-field-label {
+    color: white;
+  }
+  .mat-form-field-underline {
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .tactic-list {
+    margin: 20px;
+  }
+}
+
+.mat-column-uuid {
+  width: 100px;
+}
+
+.mat-column-title {
+  max-width: 150px;
+}
+
+.mat-column-description {
+  width: 850px;
+}
+
+.mat-column-source {
+  max-width: 250px;
+}
+
+mat-cell,
+.mat-cell {
+  min-height: auto; // overrides the 'inherit' that set the min height of the row
+  padding: 12px 16px 12px 0;
+}

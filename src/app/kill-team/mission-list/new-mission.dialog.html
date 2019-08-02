@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Create New Mission</h1>
+<div mat-dialog-content>
+  <p>What's the name of this new mission?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="newMissionName "placeholder="Mission Name"  required>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="onNoClick()">cancel</button>&nbsp;
+  <button mat-raised-button [disabled]="!newMissionName" [mat-dialog-close]="newMissionName" color="primary" cdkFocusInitial>next</button>
+</div>

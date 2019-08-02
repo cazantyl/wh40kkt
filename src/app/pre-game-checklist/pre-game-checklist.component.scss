@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
+@import url('https://fonts.googleapis.com/css?family=Russo+One');
+
+
+.header,
+.footer {
+  @extend .orange-carbon-fibre;
+  // @extend .carbon;
+  // color: white;
+  margin-bottom: 0px;
+}
+
+.inner-card {
+  padding: 5px;
+}
+
+.orange-carbon-fibre {
+  background:
+    radial-gradient(rgb(179, 49, 1) 15%, transparent 16%) 0 0,
+    radial-gradient(rgb(179, 49, 1) 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+  background-color: orangered;
+  background-size: 8px 8px;
+}
+
+.carbon {
+  background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+}
+
+.footer {
+  padding-right: 1em;
+  text-align: right;
+}
+
+.subtext {
+  // background-color: lightgray;
+  font-style: italic;
+  font-size: 12px;
+  color: lightgray;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Gunplay, 'Black Ops One';
+  font-weight: normal;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+// h1 {
+//   color: white;
+// }
+
+h2 {
+  font-family: 'Russo One';
+}
+
+.cost {
+  font-family: 'Russo One';
+  font-weight: bold;
+}
+
+h4 {
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.description {
+  font-style: italic;
+}
+
+.box {
+  outline: solid 2px;
+  outline-color: orangered;
+  max-width: 30em;
+  min-height: 10em;
+  margin: 15px;
+  background-color: white;
+  // padding: 5px;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  >div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 5px;
+
+    button {
+      margin-bottom: 17px;
+    }
+  }
+}
+
+.fab-toggler {
+  float: right;
+  z-index: 100;
+}

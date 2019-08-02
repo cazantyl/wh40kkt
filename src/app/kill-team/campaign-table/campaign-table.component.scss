@@ -1,0 +1,42 @@
+.mat-column-roll {
+  width: 75px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-header-cell {
+  @extend .orange-carbon-fibre;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.non-rolled-result {
+  background-color: #282828;
+  color: white!important;
+}
+
+p {
+  color: white;
+}
+
+.orange-carbon-fibre {
+  background:
+    radial-gradient(rgb(179, 49, 1) 15%, transparent 16%) 0 0,
+    radial-gradient(rgb(179, 49, 1) 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+  background-color: orangered;
+  background-size: 8px 8px;
+}
+
+.mat-raised-button:hover {
+  .mat-icon.dice {
+    animation: rotate 2.5s ease-in-out 0s infinite;
+  }
+}

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
+
+h1 {
+  font-family: Gunplay, 'Black Ops One';
+}
+
+
+
+.menu-label {
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  // background-color: #dadadace;
+}
+
+.footer {
+  @extend .carbon;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  margin-top: 25px;
+  width: 100%;
+  color: white;
+  border-top: 5px solid orangered;
+  padding: 15px;
+  // height: 30px;
+  text-align: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.mat-toolbar {
+  @extend .carbon;
+  border-bottom: 5px solid orangered;
+}
+
+.logo {
+  vertical-align: middle;
+}
+
+.title {
+  font-family: Gunplay, 'Black Ops One';
+  vertical-align: middle;
+}
+
+a {
+  color: orangered;
+}
+
+.disclaimer {
+  padding: 10px;
+  padding-left: 25px;
+  color: orangered;
+}
+
+.user {
+  visibility: hidden;
+}
+
+.loginorout {
+  visibility: hidden;
+}
+
+@media only screen and (min-width: 800px) {
+  .user {
+    visibility: visible;
+    font-size: 12px;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .loginorout {
+    visibility: visible;
+  }
+}
+
+.carbon {
+  color: white;
+
+  background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+}
+
+.carbon-fibre {
+  background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255, 255, 255, .1) 15%, transparent 20%) 8px 9px;
+  background-color: #282828;
+  background-size: 16px 16px;
+}

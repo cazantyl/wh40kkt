@@ -1,0 +1,6 @@
+
+<mat-checkbox class="confirm-delete" [(ngModel)]="confirmed">I confirm that I want to delete this mission</mat-checkbox>
+<br />
+<br />
+<button mat-raised-button (click)="cancelDelete()"><mat-icon>cancel</mat-icon> CANCEL</button>&nbsp;
+<button mat-raised-button [disabled]="!confirmed" (click)="confirmDelete()" color="warn" cdkFocusInitial><mat-icon>delete</mat-icon> DELETE</button>

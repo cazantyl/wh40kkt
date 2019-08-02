@@ -1,0 +1,73 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu Button">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <div class="menu-label" *ngIf="authService.user"><mat-icon *ngIf="authService.isWhiteListed">spa</mat-icon> {{authService.user.email}}</div>
+ 
+    <button mat-menu-item (click)="navigateToList()">
+      <mat-icon>style</mat-icon>
+      <span>Search Missions</span>
+    </button>
+    <button mat-menu-item (click)="navigateToTactics()">
+      <mat-icon>ballot</mat-icon>
+      <span>Search Tactics</span>
+    </button>
+
+    <button mat-menu-item (click)="navigateToCampaignTable()">
+      <mat-icon>view_comfy</mat-icon>
+      <span>Campaign Roll Table</span>
+    </button>
+    
+    <button mat-menu-item (click)="navigateToPreGameChecklist()">
+      <mat-icon>playlist_add_check</mat-icon>
+      <span>Pre-Game Checklist</span>
+    </button>
+
+    <button mat-menu-item disabled>
+      <mat-icon>cake</mat-icon>
+      <span>This is a lie</span>
+    </button>
+    <hr />
+    <div *ngIf="authService.user">
+      <button mat-menu-item color="accent" *ngIf="authService.user" (click)="logout()">
+        <mat-icon>power_off</mat-icon>
+        <span>Log Out</span>
+      </button>
+    </div>
+    <div *ngIf="!authService.user">
+      <button mat-menu-item color="accent" (click)="login()">
+        <mat-icon>person</mat-icon>
+        <span>Log In</span>
+      </button>
+    </div>
+  </mat-menu>
+  <a href="/missions/list"><img class="logo" src="../assets/ktli.svg" type="image/svg+xml" width="64" height="64" /></a>
+  &nbsp;
+  <span class="title">{{title}}</span>
+  <span class="spacer"></span>
+  <div class="loginorout" *ngIf="authService.user">
+    <span class="user"><mat-icon *ngIf="authService.isWhiteListed">spa</mat-icon> {{authService.user.email}}&nbsp;</span>
+    <button mat-stroked-button color="accent" *ngIf="authService.user" (click)="logout()">
+      <mat-icon>power_off</mat-icon>
+      <span>Log Out</span>
+    </button>
+  </div>
+  <div class="loginorout" *ngIf="!authService.user">
+    <button mat-stroked-button color="accent" (click)="login()">
+      <mat-icon>person</mat-icon>
+      <span>Log In</span>
+    </button>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+<div class="footer">Content on this site is provided for reference purposes only. Don't own the rulebooks? <a href="https://www.games-workshop.com/en-US/Kill-Team-Commanders-epub-2018">Buy One!</a><br /><br />
+  <button mat-raised-button color="primary" aria-label="Become a Patron!" (click)="becomePatron()">
+    <mat-icon>redeem</mat-icon>Become a Patron!
+  </button>&nbsp;
+  <button mat-raised-button color="primary" aria-label="Report a Bug" (click)="reportBug()">
+    <mat-icon>bug_report</mat-icon> Report a Bug
+  </button>
+</div>

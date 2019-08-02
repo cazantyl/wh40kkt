@@ -1,0 +1,28 @@
+
+<br />
+<button mat-raised-button color="primary" aria-label="Roll Mission!" (click)="chooseRandomMission()">
+  <mat-icon class="dice">casino</mat-icon> Roll Mission!
+</button>
+<br /><br />
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+  <ng-container matColumnDef="roll">
+    <th mat-header-cell *matHeaderCellDef>2D6</th>
+    <td mat-cell *matCellDef="let element"> {{element.rollDisplay}} </td>
+  </ng-container>
+  <ng-container matColumnDef="result">
+    <th mat-header-cell *matHeaderCellDef>RESULT</th>
+    <td *matCellDef="let element" [innerHTML]="element.result"></td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr [ngClass]="{'non-rolled-result': row.rolled !== true && row.rolled !== -1}" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<br />
+
+<p *ngIf="rolledMission">You rolled: {{rolledMission}}</p>
+
+<button mat-raised-button color="primary" aria-label="Roll Mission!" (click)="chooseRandomMission()">
+  <mat-icon class="dice">casino</mat-icon> Roll Mission!
+</button>&nbsp;
+<button *ngIf="rolledMission" mat-raised-button color="primary" aria-label="Reset" (click)="resetRoll()">
+  <mat-icon class="dice">undo</mat-icon> Reset
+</button>

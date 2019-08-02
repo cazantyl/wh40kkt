@@ -1,0 +1,19 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+
+// Available color palettes: https://material.io/design/color/
+
+// $kill-team-primary-color-dark:   #E64A19;
+// $kill-team-primary-color:        #FF5722;
+$kill-team-primary-color: mat-palette($mat-deep-orange, A400);
+// $kill-team-primary-color-light:  #FFCCBC;
+// $kill-team-primary-color-text:   #FFFFFF;
+$kill-team-accent-color: mat-palette($mat-grey, A800);
+$kill-team-primary-text-color:   #212121;
+$kill-team-secondary-text-color: white;
+// $kill-team-divider-color:        #BDBDBD;
+
+$kill-team-app-theme: mat-light-theme($kill-team-primary-color, $kill-team-accent-color);
+
+@include angular-material-theme($kill-team-app-theme);

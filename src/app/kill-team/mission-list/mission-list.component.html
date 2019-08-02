@@ -1,0 +1,166 @@
+<h1>Mission List</h1>
+
+<div class="mission-list">
+  <p class="instructions">To view the details of any mission, simply click on it. <br />
+    If you would like to filter the missions displayed below, click on `Search Options` and make your selections</p>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Search Options</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-accordion>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Text Search
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field class="white-field">
+            <span matPrefix>
+              <mat-icon>filter_list</mat-icon>&nbsp;
+            </span>
+            <input matInput (keyup)="applyFilter($event.target.value)"
+              placeholder="Enter Text Filter Here... (Mission Name, Type, Source, Etc.)" [(ngModel)]="filterValue">
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Rulebook References
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-checkbox class="phase-margin" (change)="updateQueue()" color="primary" [(ngModel)]="showCoreRulebook">
+            Core
+            Rulebook</mat-checkbox>
+          <br />
+          <mat-checkbox class="phase-margin" (change)="updateQueue()" color="primary" [(ngModel)]="showElitesRulebook">
+            Elites Rulebook</mat-checkbox>
+          <br />
+          <mat-checkbox class="phase-margin" (change)="updateQueue()" color="primary" [(ngModel)]="showOther">Other
+            Rulebooks (Mission Cards, White Dwarf, etc)
+          </mat-checkbox><br />
+
+          <mat-checkbox (change)="updateQueue()" class="phase-margin" color="primary"
+            [(ngModel)]="showCommandersRulebook">Commanders Rulebook
+          </mat-checkbox><span *ngIf="ignoreCommandersGames"> <strong>Note:</strong> Ignore Commanders filter is
+            enabled. Disable it to see these missions.</span><br />
+          <mat-checkbox disabled (change)="updateQueue()" class="phase-margin" color="primary"
+            [(ngModel)]="showTournamentRulebooks">Tournament
+            Rulebooks [COMING SOON!]</mat-checkbox><br />
+          <mat-checkbox disabled (change)="updateQueue()" class="phase-margin" color="primary"
+            [(ngModel)]="showArenaRulebook">Arena Rulebook [COMING
+            SOON!]</mat-checkbox><br />
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Game Type
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-checkbox class="phase-margin" (change)="updateQueue()" color="primary" [(ngModel)]="showOpenPlay">Open
+            Play
+          </mat-checkbox>
+          <br />
+          <mat-checkbox class="phase-margin" (change)="updateQueue()" color="primary" [(ngModel)]="showMatchedPlay">
+            Matched
+            Play</mat-checkbox>
+          <br />
+          <mat-checkbox class="phase-margin" (change)="updateQueue()" color="primary" [(ngModel)]="showNarrativePlay">
+            Narrative Play</mat-checkbox>
+          <br />
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Other Filters
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-checkbox class="phase-margin" (change)="updateQueue()" color="primary"
+            [(ngModel)]="ignoreCommandersGames">Do Not Show Games That Require a Commander
+          </mat-checkbox>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <br />
+
+  <button *ngIf="dataSource?.data.length > 0" mat-raised-button color="primary"  aria-label="Choose Random Mission" (click)="chooseRandomMission()">
+    <mat-icon class="dice">casino</mat-icon> Choose Random Mission
+  </button>
+  &nbsp;
+  <button mat-raised-button color="primary" aria-label="Clear Search" (click)="clearSearch()">
+    <mat-icon class="">clear_all</mat-icon> Clear Search
+  </button>  
+  <br /><br />
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="uuid">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.uuid}} </td>
+      </ng-container>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.description"></td>
+      </ng-container>
+
+      <!-- Source Column -->
+      <ng-container matColumnDef="source">
+        <th mat-header-cell *matHeaderCellDef> Source </th>
+        <td mat-cell *matCellDef="let element"> {{element.source}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr (click)="goToView(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator #paginator [length]="dataSource?.data.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+  </div>
+
+
+  <br />
+
+
+
+  <button *ngIf="authService.isWhiteListed" mat-raised-button color="primary" aria-label="Create New Mission"
+    (click)="createNewMission()">
+    <mat-icon>add_box</mat-icon> Create New Mission
+  </button>
+  &nbsp;
+  <button *ngIf="dataSource?.data.length > 0" mat-raised-button color="primary" aria-label="Choose Random Mission" (click)="chooseRandomMission()">
+    <mat-icon class="dice">casino</mat-icon> Choose Random Mission
+  </button>
+</div>
+
+<div class="fab-container">
+  <button *ngIf="dataSource?.data.length > 0" mat-mini-fab color="primary" aria-label="Choose Random Mission" (click)="chooseRandomMission()">
+    <mat-icon class="dice">casino</mat-icon>
+  </button>
+</div>

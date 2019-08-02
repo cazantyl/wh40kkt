@@ -1,0 +1,70 @@
+<div class="box">
+  <h1 class="header card-title">{{tactic.title}} <button *ngIf="authService.isWhiteListed" mat-icon-button color="accent"
+      aria-label="Edit Tactic" (click)="goToEdit()">
+      <mat-icon>edit</mat-icon>
+    </button></h1>
+
+  <div class="inner-card">
+    <h2>Description</h2>
+    <span class="subtext"><strong>Source: </strong>{{tactic.source}}</span>
+    <h3>{{tactic.type}}</h3>
+    <p [innerHTML]="tactic.description"></p>
+
+    <h2>Phases</h2>
+    <div *ngIf="tactic.phaseBeforeFirstRound">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phaseBeforeFirstRound">Before
+        First Battle Round</mat-checkbox>
+      <br />
+    </div>
+    <div *ngIf="tactic.phaseStartOfRound">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phaseStartOfRound">Start of a
+        Battle
+        Round
+      </mat-checkbox><br />
+    </div>
+    <div *ngIf="tactic.phaseInitiative">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phaseInitiative">Initiative
+        Phase
+      </mat-checkbox><br />
+    </div>
+    <div *ngIf="tactic.phaseMovement">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phaseMovement">Movement Phase
+      </mat-checkbox><br />
+    </div>
+    <div *ngIf="tactic.phasePsychic">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phasePsychic">Psychic Phase
+      </mat-checkbox>
+      <br />
+    </div>
+    <div *ngIf="tactic.phaseShooting">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phaseShooting">Shooting Phase
+      </mat-checkbox><br />
+    </div>
+    <div *ngIf="tactic.phaseFight">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phaseFight">Fight Phase
+      </mat-checkbox>
+      <br />
+    </div>
+    <div *ngIf="tactic.phaseMorale">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phaseMorale">Morale Phase
+      </mat-checkbox>
+      <br />
+    </div>
+    <div *ngIf="tactic.phaseEndOfTurn">
+      <mat-checkbox disabled class="phase-margin" color="primary" [(ngModel)]="tactic.phaseEndOfTurn">End of Battle
+        Round
+      </mat-checkbox><br />
+    </div>
+  </div>
+  <h2 class="footer"><span class="cost-label">Cost: </span><span class="cost">{{tactic.cost}}</span></h2>
+</div>
+
+<div *ngIf="!passedUuid" class="fab-container">
+  <button *ngIf="authService.isWhiteListed" mat-mini-fab color="primary" aria-label="Edit Tactic" (click)="goToEdit()">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <br />
+  <button mat-mini-fab color="primary" aria-label="Back" (click)="goToList()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>

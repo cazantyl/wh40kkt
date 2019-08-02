@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Create New Tactic</h1>
+<div mat-dialog-content>
+  <p>What's the name of this new tactic?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="newTacticName "placeholder="Tactic Name"  required>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="onNoClick()">cancel</button>&nbsp;
+  <button mat-raised-button [disabled]="!newTacticName" [mat-dialog-close]="newTacticName" color="primary" cdkFocusInitial>next</button>
+</div>

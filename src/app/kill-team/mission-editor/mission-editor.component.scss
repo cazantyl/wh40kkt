@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
+
+.mission-card {
+  @extend .lined-paper;
+  max-width: 600px;
+}
+
+.mission-header-image {
+  background-image: url('../../../assets/images/dark-angels.jpg');
+  background-size: cover;
+}
+
+.header {
+  font-family: Gunplay, 'Black Ops One';
+  font-weight: normal;
+}
+
+.description {
+  font-style: italic;
+}
+
+mat-form-field {
+  padding: 5px;
+  width: 95%;
+}
+
+mat-card {
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  >div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 5px;
+
+    button {
+      margin-bottom: 17px;
+    }
+  }
+}
+
+.fab-toggler {
+  float: right;
+  z-index: 100;
+}
+
+.lined-paper {
+  background-color: #fff;
+  background-image:
+    linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
+}

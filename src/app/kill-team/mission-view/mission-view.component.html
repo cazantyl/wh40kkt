@@ -1,0 +1,80 @@
+<mat-card class="mission-card">
+  <mat-card-header>
+    <div mat-card-avatar class="mission-header-image"></div>
+    <mat-card-title class="header card-title">
+      {{mission.title}}
+      <button *ngIf="authService.isWhiteListed" mat-icon-button color="accent" aria-label="Edit Mission" (click)="goToEdit()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-title>
+    <mat-card-subtitle class="description">{{mission.description}}</mat-card-subtitle>
+    <mat-card-subtitle class="type">{{mission.type}}<br />
+    <mat-checkbox *ngIf="mission.requiresCommander" disabled class="phase-margin" color="primary" [(ngModel)]="mission.requiresCommander">Requires Commander</mat-checkbox>
+  </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <h1 class="header" *ngIf="mission.alternative_mission">Alternative Mission Option</h1>
+    <p *ngIf="mission.alternative_mission" [innerHTML]="mission.alternative_mission"></p>
+    <h1 class="header">The Kill Teams</h1>
+    <p [innerHTML]="mission.the_kill_teams"></p>
+    <h1 class="header">The Battlefield</h1>
+    <p [innerHTML]="mission.the_battlefield"></p>
+    <h1 class="header">Scouting Phase</h1>
+    <p [innerHTML]="mission.scouting_phase"></p>
+    <h1 class="header">Deployment</h1>
+    <p [innerHTML]="mission.deployment"></p>
+    <h1 class="header">Battle Length</h1>
+    <p [innerHTML]="mission.battle_length"></p>
+
+    <div *ngIf="mission.specialRulesTitle">
+      <h1 class="header">{{mission.specialRulesTitle}}</h1>
+      <p [innerHTML]="mission.specialRules"></p>
+    </div>
+
+    <div *ngIf="mission.specialRules2Title">
+      <h1 class="header">{{mission.specialRules2Title}}</h1>
+      <p [innerHTML]="mission.specialRules2"></p>
+    </div>
+
+    <img *ngIf="mission.special_rule_image" class="map" mat-card-image src={{mission.special_rule_image}} alt="Special Rule Image">
+
+    <h1 class="header">Victory Conditions</h1>
+    <p [innerHTML]="mission.victory_conditions"></p>
+    <h1 *ngIf="mission.resources" class="header">Resources</h1>
+    <p [innerHTML]="mission.resources"></p>
+    <h1 *ngIf="mission.attackerTactic || mission.defenderTactic" class="header">Tactics</h1>
+    <div *ngIf="mission.attackerTactic">
+      <h3>Attacker Tactic</h3>
+      <app-tactic-view [passedUuid]="mission.attackerTactic"></app-tactic-view>
+    </div>
+    <div *ngIf="mission.defenderTactic">
+      <h3>Defender Tactic</h3>
+      <app-tactic-view [passedUuid]="mission.defenderTactic"></app-tactic-view>
+    </div>
+    <h1 *ngIf="mission.two_player_map || mission.four_player_map" class="header">Maps</h1>
+    <div *ngIf="mission.two_player_map">
+      <h3>Two Player Map</h3>
+      <img class="map" mat-card-image src={{mission.two_player_map}} alt="Mission Map">
+    </div>
+    <div *ngIf="mission.four_player_map">
+      <h3>Four Player Map</h3>
+      <img class="map" mat-card-image src={{mission.four_player_map}} alt="Mission Map">
+    </div>
+    <hr />
+    <h3 class="header">Source</h3>
+    <p>{{mission.source}} - Page {{mission.page}}</p>
+    <p *ngIf="mission.contributor"><strong>Contributed by:</strong> {{mission.contributor}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>
+
+<div class="fab-container">
+  <button *ngIf="authService.isWhiteListed" mat-mini-fab color="primary" aria-label="Edit Mission" (click)="goToEdit()">
+    <mat-icon>edit</mat-icon>
+  </button><br />
+  <button mat-mini-fab color="primary" aria-label="Back" (click)="goToList()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
+
+.mission-header-image {
+  background-image: url('../../../assets/images/dark-angels.jpg');
+  background-size: cover;
+}
+
+.header {
+  font-family: Gunplay, 'Black Ops One';
+  font-weight: normal;
+}
+
+h1 {
+  font-family: Gunplay, 'Black Ops One';
+  font-weight: normal;
+  color: white;
+  margin-bottom: 0px;
+  padding-left: 20px;
+}
+
+h2 {
+  color: white;
+}
+
+.instructions {
+  color: orangered;
+}
+
+.description {
+  font-style: italic;
+}
+
+.white {
+  color: white;
+}
+
+.white-field {
+  width: 100%;
+}
+
+.mat-raised-button:hover {
+  .mat-icon.dice {
+    animation: rotate 2.5s ease-in-out 0s infinite;
+  }
+}
+
+.mat-mini-fab:hover {
+  .mat-icon.dice {
+    vertical-align: middle;
+    animation: rotate 2.5s ease-in-out 0s infinite;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .mission-list {
+    margin: 20px;
+  }
+}
+
+.mat-column-uuid {
+  width: 100px;
+}
+
+.mat-column-title {
+  max-width: 150px;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-row
+{
+    cursor: pointer;
+}
+.mat-row td
+{
+    transition: background .1s ease;
+}
+.mat-row:hover td, .mat-row:focus td
+{
+    background: #ff3d00;
+    color: white;
+}
+
+.mat-column-source {
+  max-width: 250px;
+}
+
+mat-cell,
+.mat-cell {
+  min-height: auto; // overrides the 'inherit' that set the min height of the row
+  padding: 12px 16px 12px 0;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  > div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 5px;
+    button {
+      margin-bottom: 17px;
+    }
+  }
+}
+.fab-toggler {
+  float: right;
+  z-index: 100;
+}

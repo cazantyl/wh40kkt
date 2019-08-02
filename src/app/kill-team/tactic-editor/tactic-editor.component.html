@@ -1,0 +1,65 @@
+<mat-card class="tactic-card">
+  <mat-card-header>
+    <div mat-card-avatar class="tactic-header-image"></div>
+    <mat-card-title class="header">
+      <mat-form-field>
+        <input matInput placeholder="Title" [(ngModel)]="tactic.title">
+      </mat-form-field>
+    </mat-card-title>
+    <mat-card-subtitle class="description">
+      <mat-form-field>
+        <input matInput placeholder="Type" [(ngModel)]="tactic.type">
+      </mat-form-field>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Description" [(ngModel)]="tactic.description"></textarea>
+    </mat-form-field>
+
+    <strong>Cost:</strong>
+    <mat-slider color="primary" class="" max="6" min="0" step="false" inverted="false" thumb="false" tickInterval="1"
+      [(ngModel)]="tactic.cost">
+    </mat-slider> {{tactic.cost}}
+
+    <section class="phase-section">
+      <h3>Phases</h3>
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phaseBeforeFirstRound">Before First Battle Round</mat-checkbox><br />
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phaseStartOfRound">Start of a Battle Round</mat-checkbox><br />
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phaseInitiative">Initiative Phase</mat-checkbox><br />
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phaseMovement">Movement Phase</mat-checkbox><br />
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phasePsychic">Psychic Phase</mat-checkbox><br />
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phaseShooting">Shooting Phase</mat-checkbox><br />
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phaseFight">Fight Phase</mat-checkbox><br />
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phaseMorale">Morale Phase</mat-checkbox><br />
+      <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="tactic.phaseEndOfTurn">End of Battle Round</mat-checkbox><br />
+    </section>
+
+    <hr />
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Source" [(ngModel)]="tactic.source"></textarea>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions *ngIf="authService.isWhiteListed">
+    <button mat-button (click)="saveTactic()">Save</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+  </mat-card-actions>
+</mat-card>
+
+<div class="fab-container">
+  <button *ngIf="authService.isWhiteListed" matTooltip="Delete Tactic" matTooltipPosition="before" mat-mini-fab color="warn"
+    aria-label="Delete Tactic" (click)="confirmTacticDeletion()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <br />
+  <button *ngIf="authService.isWhiteListed" matTooltip="Cancel Edit" matTooltipPosition="before" mat-mini-fab color="accent"
+    aria-label="Cancel Editing Tactic" (click)="cancel()">
+    <mat-icon>cancel</mat-icon>
+  </button>
+  <br />
+  <button *ngIf="authService.isWhiteListed" matTooltip="Save Tactic" matTooltipPosition="before" mat-mini-fab color="primary"
+    aria-label="Save Tactic" (click)="saveTactic()">
+    <mat-icon>save</mat-icon>
+  </button>
+</div>

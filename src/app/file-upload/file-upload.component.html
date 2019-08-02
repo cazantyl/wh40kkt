@@ -1,0 +1,13 @@
+<button mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+    <mat-icon>cloud_upload</mat-icon> Choose File
+  </button>
+  <input hidden (change)="onFileSelected()" (change)="startUpload($event.target.files)" #fileInput type="file" id="file">
+
+<div *ngIf="percentage | async as pct">
+  <progress class="progress is-info" [value]="pct" max="100"></progress>
+  {{ pct | number }}%
+</div>
+
+<div *ngIf="(snapshot | async) as snap">
+  {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+</div>
