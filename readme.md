@@ -31,7 +31,7 @@ export const environment = {
 
 `git update-index --skip-worktree src/environments/environment.ts`
 
-Pull requests that include this file will rejected.
+*Pull requests that include this file will be rejected.*
 
 ## Development server
 
