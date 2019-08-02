@@ -13,7 +13,6 @@ If you'd like to report a bug, please add it to our [Issues Log](https://github.
 You will need to add your whitelist, firebase database, and Google Analytics tag to `src\environments\environment.ts`
 ```
 export const environment = {
-  production: false,
   firebase: {
     apiKey: 'YOUR_API_KEY',
     authDomain: 'YOUR_AUTH_DOMAIN',
