@@ -27,6 +27,11 @@ export const environment = {
   uatag: 'Your google analytics tag',
 };
 ```
+**!!IMPORTANT!!** After you have created the above environment.ts, run the following command from within the project:
+
+`git update-index --skip-worktree src/environments/environment.ts`
+
+Pull requests that include this file will rejected.
 
 ## Development server
 
