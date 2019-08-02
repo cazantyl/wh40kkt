@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatDialogRef, MAT_DIALOG_DATA, PageEvent } from '@angular/material';
 import { includes, filter } from 'lodash';
 import { AuthService } from '../../services/auth.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mission-list',
@@ -49,11 +50,14 @@ export class MissionListComponent implements OnInit, OnDestroy {
 
   public sources = ['core rulebook', 'elites rulebook', 'commanders rulebook', 'arena rulebook', 'tournament rulebooks'];
 
+  missionsJSONHref: SafeUrl;
+
   constructor(private db: AngularFirestore, private missionService: MissionService,
     private router: Router,
     public dialog: MatDialog,
     private authService: AuthService,
-    private changeDetectorRefs: ChangeDetectorRef
+    private changeDetectorRefs: ChangeDetectorRef,
+    private sanitizer: DomSanitizer
   ) {
     this.dataSource = new MatTableDataSource();
   }
@@ -89,8 +93,15 @@ export class MissionListComponent implements OnInit, OnDestroy {
     );
     this.missionsObservable.subscribe(data => {
       this.missions = data;
+      this.generateDownloadJsonUri();
       this.updateQueue();
     });
+  }
+
+  private generateDownloadJsonUri() {
+    const missionsJSON = JSON.stringify(this.missions);
+    const uri = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(missionsJSON));
+    this.missionsJSONHref = uri;
   }
 
   private initializeForm(): void {

@@ -95,13 +95,14 @@
   </mat-accordion>
   <br />
 
-  <button *ngIf="dataSource?.data.length > 0" mat-raised-button color="primary"  aria-label="Choose Random Mission" (click)="chooseRandomMission()">
+  <button *ngIf="dataSource?.data.length > 0" mat-raised-button color="primary" aria-label="Choose Random Mission"
+    (click)="chooseRandomMission()">
     <mat-icon class="dice">casino</mat-icon> Choose Random Mission
   </button>
   &nbsp;
   <button mat-raised-button color="primary" aria-label="Clear Search" (click)="clearSearch()">
     <mat-icon class="">clear_all</mat-icon> Clear Search
-  </button>  
+  </button>
   <br /><br />
 
   <div>
@@ -143,24 +144,26 @@
     <mat-paginator #paginator [length]="dataSource?.data.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
     </mat-paginator>
   </div>
-
-
   <br />
-
-
-
   <button *ngIf="authService.isWhiteListed" mat-raised-button color="primary" aria-label="Create New Mission"
     (click)="createNewMission()">
     <mat-icon>add_box</mat-icon> Create New Mission
   </button>
   &nbsp;
-  <button *ngIf="dataSource?.data.length > 0" mat-raised-button color="primary" aria-label="Choose Random Mission" (click)="chooseRandomMission()">
+  <a *ngIf="authService.isWhiteListed" mat-raised-button color="primary" aria-label="Download Missions"
+    [href]="missionsJSONHref" download="mission-data.json">
+    <mat-icon>save_alt</mat-icon> Download Missions
+  </a>
+  &nbsp;
+  <button *ngIf="dataSource?.data.length > 0" mat-raised-button color="primary" aria-label="Choose Random Mission"
+    (click)="chooseRandomMission()">
     <mat-icon class="dice">casino</mat-icon> Choose Random Mission
   </button>
 </div>
 
 <div class="fab-container">
-  <button *ngIf="dataSource?.data.length > 0" mat-mini-fab color="primary" aria-label="Choose Random Mission" (click)="chooseRandomMission()">
+  <button *ngIf="dataSource?.data.length > 0" mat-mini-fab color="primary" aria-label="Choose Random Mission"
+    (click)="chooseRandomMission()">
     <mat-icon class="dice">casino</mat-icon>
   </button>
 </div>

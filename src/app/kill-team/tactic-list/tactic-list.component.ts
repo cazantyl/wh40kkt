@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { includes } from 'lodash';
 import { AuthService } from '../../services/auth.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tactic-list',
@@ -26,10 +27,13 @@ export class TacticListComponent implements OnInit {
 
   displayedColumns: string[] = ['title', 'description', 'cost', 'source', 'view'];
 
+  tacticsJSONHref: SafeUrl;
+
   constructor(private db: AngularFirestore, private tacticService: TacticService,
     private router: Router,
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private sanitizer: DomSanitizer
     ) {
       this.dataSource = new MatTableDataSource();
     }
@@ -51,8 +55,15 @@ export class TacticListComponent implements OnInit {
 
     this.tacticsObservable.subscribe(data => {
       this.tactics = data;
+      this.generateDownloadJsonUri();
       this.dataSource = new MatTableDataSource<Tactic>(this.tactics);
     });
+  }
+
+  private generateDownloadJsonUri() {
+    const tacticsJSON = JSON.stringify(this.tactics);
+    const uri = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(tacticsJSON));
+    this.tacticsJSONHref = uri;
   }
 
   public goToEdit(tactic: Tactic) {

@@ -55,5 +55,10 @@
   <button *ngIf="authService.isWhiteListed" mat-raised-button color="primary" aria-label="Create New Tactic"
     (click)="createNewTactic()">
     <mat-icon>add_box</mat-icon> Create New Tactic
-  </button>
+  </button>&nbsp;
+  <a *ngIf="authService.isWhiteListed" mat-raised-button color="primary" aria-label="Download Tactics"
+    [href]="tacticsJSONHref" download="tactics-data.json">
+    <mat-icon>save_alt</mat-icon> Download Tactics
+  </a>
+
 </div>
