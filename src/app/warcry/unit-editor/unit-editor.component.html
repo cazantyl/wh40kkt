@@ -1,0 +1,134 @@
+<mat-card  *ngIf="authService.isWhiteListed" class="unit-card">
+  <mat-card-header>
+    <div mat-card-avatar class="unit-header-image"></div>
+    <mat-card-title class="header">
+      <mat-form-field>
+        <input matInput placeholder="Title" [(ngModel)]="unit.title">
+      </mat-form-field>
+    </mat-card-title>
+    <mat-card-subtitle class="description">
+
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Description" [(ngModel)]="unit.description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Alternative unit option"
+        [(ngModel)]="unit.alternative_unit"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Type" [(ngModel)]="unit.type"></textarea>
+    </mat-form-field>
+    <br />
+    <mat-checkbox class="phase-margin" color="primary" [(ngModel)]="unit.requiresCommander">Requires Commander</mat-checkbox>
+    <br /><br />
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="The Kill Teams"
+        [(ngModel)]="unit.the_kill_teams"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="The Battlefield"
+        [(ngModel)]="unit.the_battlefield"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Scouting Phase"
+        [(ngModel)]="unit.scouting_phase"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Deployment" [(ngModel)]="unit.deployment"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Battle Length" [(ngModel)]="unit.battle_length"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput cdkTextareaAutosize placeholder="Special Rules Title" [(ngModel)]="unit.specialRulesTitle" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Special Rules" [(ngModel)]="unit.specialRules"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput cdkTextareaAutosize placeholder="Additional Special Rules Title"
+        [(ngModel)]="unit.specialRules2Title" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Additional Special Rules"
+        [(ngModel)]="unit.specialRules2"></textarea>
+    </mat-form-field>
+
+    <img class="map" mat-card-image src={{unit.special_rule_image}} alt="Special Rule Image">
+    <app-file-upload [path]="mapPath" (downloadURLEvent)="setSpecialRuleImage($event)"></app-file-upload>
+
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Victory Conditions"
+        [(ngModel)]="unit.victory_conditions"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize placeholder="Resources" [(ngModel)]="unit.resources"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Attacker Tactic" [(ngModel)]="unit.attackerTactic">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Defender Tactic" [(ngModel)]="unit.defenderTactic">
+    </mat-form-field>
+
+    <h3>Two Player Map</h3>
+    <img class="map" mat-card-image src={{unit.two_player_map}} alt="unit Map">
+    <app-file-upload [path]="mapPath" (downloadURLEvent)="setTwoPlayerMap($event)"></app-file-upload>
+
+    <h3>Four Player Map</h3>
+    <img class="map" mat-card-image src={{unit.four_player_map}} alt="unit Map">
+    <app-file-upload [path]="mapPath" (downloadURLEvent)="setFourPlayerMap($event)"></app-file-upload>
+    <mat-form-field>
+      <input matInput placeholder="Source Book" [(ngModel)]="unit.source">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Source Page" [(ngModel)]="unit.page">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Contributed By" [(ngModel)]="unit.contributor">
+    </mat-form-field>
+
+  </mat-card-content>
+  <mat-card-actions *ngIf="authService.isWhiteListed">
+    <button mat-button (click)="saveunit()">Save</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+  </mat-card-actions>
+</mat-card>
+
+<div class="fab-container">
+  <button *ngIf="authService.isWhiteListed" matTooltip="Delete unit" matTooltipPosition="before" mat-mini-fab color="warn"
+    aria-label="Delete unit" (click)="confirmunitDeletion()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <br />
+  <button *ngIf="authService.isWhiteListed" matTooltip="Cancel Edit" matTooltipPosition="before" mat-mini-fab color="accent"
+    aria-label="Cancel Editing unit" (click)="cancel()">
+    <mat-icon>cancel</mat-icon>
+  </button>
+  <br />
+  <button *ngIf="authService.isWhiteListed" matTooltip="Save unit" matTooltipPosition="before" mat-mini-fab color="primary"
+    aria-label="Save unit" (click)="saveunit()">
+    <mat-icon>save</mat-icon>
+  </button>
+</div>
+
+<mat-card *ngIf="!authService.isWhiteListed">
+  <h1>Not Whitelisted</h1>
+  <p>We're sorry, only white-listed users are allowed to edit anything on the site. If you would like to become whitelisted, please put in a request on github.</p>
+</mat-card>
